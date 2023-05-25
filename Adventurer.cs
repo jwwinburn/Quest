@@ -8,17 +8,18 @@ namespace Quest
         // The only place the Name can be set is in the Adventurer constructor
         // Note: the constructor is defined below.
         public string Name { get; }
-        public Robe ColorOfRobe { get; }
-
-        public Adventurer(Robe colorOfRobe)
-        {
-            ColorOfRobe = colorOfRobe;
-        }
+        public Robe ColorfulRobe { get; }
 
         public string GetDescription()
         {
-            return $"{Name} {ColorOfRobe}";
+            string rColors = "";
+            foreach (var robeColors in ColorfulRobe.Colors)
+            {
+                rColors += $"{robeColors}, ";
+            }
+            return $"{Name} covers himself with his {rColors} robe. It is awesome!";
         }
+
         
 
         
@@ -29,10 +30,11 @@ namespace Quest
         public int Awesomeness { get; set; }
 
         // A constructor to make a new Adventurer object with a given name
-        public Adventurer(string name)
+        public Adventurer(string name, Robe colorOfRobe)
         {
             Name = name;
             Awesomeness = 50;
+            ColorfulRobe = colorOfRobe;
         }
 
 

@@ -5,16 +5,14 @@ using System.Collections.Generic;
 // Classes within the same namespace refer to one another without a "using" statement
 namespace Quest
 {
-    class Program
+    partial class Program
     {
         static void Main(string[] args)
         {
             Robe robe = new Robe();
-            Adventurer adventurer = new Adventurer(robe);
-
-
             robe.Colors = new List<string> { "red", "blue", "green" };
             robe.Length = 50;
+
 
             // Create a few challenges for our Adventurer's quest
             // The "Challenge" Constructor takes three arguments
@@ -29,8 +27,8 @@ namespace Quest
             
             System.Console.WriteLine("Hello, what is your name?");
             // Make a new "Adventurer" object using the "Adventurer" class
-            Adventurer theAdventurer = new Adventurer(Console.ReadLine());
-            
+            Adventurer theAdventurer = new Adventurer(Console.ReadLine(), robe);
+            System.Console.WriteLine(theAdventurer.GetDescription());
     
 
             Challenge twoPlusTwo = new Challenge("2 + 2?", 4, 10);
